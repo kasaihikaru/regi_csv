@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="top">
+	<h1>アップロードしますか？？？？</h1>
+</div>
+<form action='/upload' enctype="multipart/form-data" method="post" >
+	<table class="form">
+		<tr>
+			<td class="title">CSVファイルを指定してください</td>
+			<td class="contents">
+				<input type="file" name="csvfile" size="50" value="" />
+			</td>
+		</tr>
+		<tr>
+			<td class="button" colspan="2">
+			<input type="submit" name="submit" value="CSVファイル読込み" />
+			</td>
+		</tr>
+	</table>
+</form>
+
+<p>ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー</p>
+{{dataset}}
+<br><br><br><br><br>
+{{df}}
+
+{% endblock %}
