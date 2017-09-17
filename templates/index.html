@@ -1,10 +1,32 @@
 {% extends "layout.html" %}
 {% block body %}
+
+<script language="JavaScript">
+<!--
+function check() {
+    if(document.form1.name.value == "") {
+        alert("名前を入力してください");
+        return false;
+    }
+    
+    if(document.form1.csvfile.value == "") {
+        alert("ファイルを選択してください。");
+        return false;
+    }
+}
+//-->
+</script>
+
+
 <div class="top">
 	<h1>アップロードしますか？？？？</h1>
 </div>
-<form action='/upload' enctype="multipart/form-data" method="post" >
+<form name="form1" action='/upload' enctype="multipart/form-data" method="post" onSubmit="return check()">
 	<table class="form">
+		<tr>
+			<td class="title">ファイルのタイトルつけてください！！！</td>
+			<td class="contents"><input type="text", name='name' placeholder='絶対につけてね？'></td>
+		<tr>
 		<tr>
 			<td class="title">CSVファイルを指定してください</td>
 			<td class="contents">
