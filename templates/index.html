@@ -8,7 +8,7 @@ function check() {
         alert("名前を入力してください");
         return false;
     }
-    
+
     if(document.form1.csvfile.value == "") {
         alert("ファイルを選択してください。");
         return false;
@@ -42,6 +42,14 @@ function check() {
 </form>
 
 <p>ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー</p>
+
+{% for csv_file in csv_files %}
+	<h3><a href="/file/{{csv_file.id}}">{{csv_file.name}}</a></h3>
+	<p>{{csv_file.created_time}}</p>
+{% endfor %}
+
+
+
 {{dataset}}
 <br><br><br><br><br>
 {{df}}

@@ -26,33 +26,34 @@ def teardown_request(exception):
 
 @app.route('/')
 def index():
-	return render_template('index.html')
+	return render_template(
+		'index.html'
+		, csv_files=Csv_file.select()
+		)
+
+	# csv_files = []
+	# for csv_file in Csv_file.select():
+	# 	csv_files.append({
+	# 		'id': csv_file[0]
+	# 		, 'name': csv_file[1]
+	# 		, 'created+time': csv_file[2]
+	# 		})
+	# print csv_files
+	# return render_template('index.html', csv_files='%s' % csv_files)
 
 
-
-	import io
-
-from flask import Flask, jsonify, request
-
-
+@app.route('/file/<id>')
+def show_file(id):
+	csv_file=Csv_file.get(Csv_file.id==id)
+	return render_template(
+		'file.html'
+		, csv_file=csv_file
+		, sales=csv_file.regi_sales
+		)
 
 
 
 @app.route('/upload', methods=['POST'])
-# dbに保存しないで表示だけ
-# def csv_upload():
-# 	filebuf = request.files.get('csvfile')
-# 	if filebuf is None:
-# 		return (u'ファイルを指定してください'), 400
-# 	elif 'text/csv' != filebuf.mimetype:
-# 		return (u'CSVファイル以外は受け付けません'), 415
-# 	else:
-# 		# dataset = pd.read_csv(filebuf, encoding='shift-jis')
-# 		dataset = pd.read_csv(filebuf, error_bad_lines=False , header=None, encoding='shift-jis')
-# 		print dataset
-
-# 		return render_template('index.html', dataset='%s' %dataset)
-
 def csv_save():
 	csvfile = request.files.get('csvfile')
 	if request.form['name'] == "":
@@ -84,8 +85,8 @@ def csv_save():
 					, payment_others=v['payment_others']
 					, payment_discount=v['payment_discount']
 				)
-		return render_template('index.html', dataset='%s' %df)
-
+		# return render_template('index.html', dataset='%s' %df)
+		return redirect(url_for('index'))
 
 
 if __name__=="__main__":

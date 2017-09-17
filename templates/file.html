@@ -1,0 +1,32 @@
+<p><a href='/'>TOP</a> > {{csv_file.name}}を見るページ</p>
+
+<h1>{{csv_file.name}}</h1>
+
+<table>
+	<tr>
+		<td class="title">営業日</td>
+		<td class="title">売り上げ</td>
+		<td class="title">会計数</td>
+		<td class="title">会計平均単価</td>
+		<td class="title">客数</td>
+		<td class="title">客平均単価</td>
+		<td class="title">販売商品数</td>
+		<td class="title">現金支払合計額</td>
+		<td class="title">その他支払合計額</td>
+		<td class="title">割引額</td>
+	</tr>
+	{% for sale in sales %}
+	<tr>
+		<td class="data">{{sale.business_day}}</td>
+		<td class="data">{{sale.sales_amount}}</td>
+		<td class="data">{{sale.check_num}}</td>
+		<td class="data">{{sale.sales_per_check}}</td>
+		<td class="data">{{sale.vistor_num}}</td>
+		<td class="data">{{sale.sales_amount_per_vis}}</td>
+		<td class="data">{{sale.order_num}}</td>
+		<td class="data">{{sale.payment_cash}}</td>
+		<td class="data">{{sale.payment_others}}</td>
+		<td class="data">{{sale.payment_discount}}</td>
+	</tr>
+	{% endfor %}
+</table>
