@@ -2,10 +2,19 @@
 
 
 .top{
-	background-color: blue;
+  background-color: blue;
 }
 
 .contests{
-	background-color: gray;
-	margin: 0 50px 0 50px;
+  background-color: gray;
+  margin: 0 50px 0 50px;
+}
+
+body table, th, td {
+  border: 1px ridge black;
+}
+
+.blue{
+  background-color: #44B8FF;
+  color:white;
 }

@@ -1,9 +1,12 @@
+{% extends "layout.html" %}
+{% block body %}
 <p><a href='/'>TOP</a> > {{csv_file.name}}を見るページ</p>
 
 <h1>{{csv_file.name}}</h1>
 
 <table>
-	<tr>
+	<thead>
+	<tr class="blue">
 		<td class="title">営業日</td>
 		<td class="title">売り上げ</td>
 		<td class="title">会計数</td>
@@ -15,6 +18,8 @@
 		<td class="title">その他支払合計額</td>
 		<td class="title">割引額</td>
 	</tr>
+	</thead>
+	<tbody>
 	{% for sale in sales %}
 	<tr>
 		<td class="data">{{sale.business_day}}</td>
@@ -41,4 +46,6 @@
 		<td class="data">{{payment_others}}</td>
 		<td class="data">{{payment_discount}}</td>
 	</tr>
+	</tbody>
 </table>
+{% endblock %}
