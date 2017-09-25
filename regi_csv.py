@@ -71,11 +71,12 @@ def show_file(id):
 	df = psql.read_sql(sql, con) # pandasのDataFrameの形でデータを取り出す
 	con.close()
 	dfsum=df.sum()
+	dfmean=df.mean()
 	sales_amount = dfsum.sales_amount
 	check_num = dfsum.check_num
-	sales_per_check = dfsum.sales_per_check
+	sales_per_check = int(dfmean.sales_per_check)
 	vistor_num = dfsum.vistor_num
-	sales_amount_per_vis = dfsum.sales_amount_per_vis
+	sales_amount_per_vis = int(dfmean.sales_amount_per_vis)
 	order_num = dfsum.order_num
 	payment_cash = dfsum.payment_cash
 	payment_others = dfsum.payment_others
